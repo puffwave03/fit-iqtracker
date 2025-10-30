@@ -121,3 +121,9 @@ creazione della **struttura delle pagine principali (`dashboard`, `nutrition`, e
 **Ultimo commit:** `feat: Nutrizione funzionante e collegata a Supabase` 
 **Responsabile:** PuffWave (user) 
 **Prossimo step:** Creazione grafici Progress Page
+30/10/2025
+Completato blocco Nutrizione + Allenamenti + Dashboard.
+- Tabelle Supabase consolidate
+- Dashboard sincronizzata con meals e workouts
+- Grafico settimanale funzionante
+- Contatori aggiornati dinamicamente
