@@ -7,6 +7,7 @@ export default function Navbar() {
   const path = usePathname();
 
   const links = [
+    { href: "/auth", label: "🔑 Login" },
     { href: "/dashboard", label: "🏠 Dashboard" },
     { href: "/nutrition", label: "🍎 Nutrizione" },
     { href: "/workouts", label: "💪 Allenamenti" },
