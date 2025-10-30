@@ -1,0 +1,99 @@
+# 🧠 FitIQtracker – Flusso di Lavoro 2025
+
+## ⚙️ BASE PROGETTO
+- [x] Creazione progetto pulito Next.js (App Router)
+- [x] Directory `src/app` configurata
+- [x] Tailwind e TypeScript pronti
+- [ ] Configurazione Supabase (`lib/supabaseClient.ts`)
+- [ ] Creazione componenti globali (`Navbar`, `Layout`)
+
+---
+
+## 🧩 STRUTTURA PRINCIPALE (da creare)
+📁 `src/`
+app/
+├─ dashboard/
+├─ nutrition/
+├─ workouts/
+├─ progress/
+├─ journal/
+├─ settings/
+└─ layout.tsx
+components/
+├─ Navbar.tsx
+├─ Header.tsx
+├─ Footer.tsx
+lib/
+├─ supabaseClient.ts
+└─ utils.ts
+styles/
+├─ globals.css
+└─ themes.css
+
+---
+
+## 🔌 BACKEND (Supabase)
+- [ ] Crea tabelle: `users`, `meals`, `daily_progress`, `ai_journal`
+- [ ] Abilita RLS e policy per utente
+- [ ] Collega chiavi `NEXT_PUBLIC_SUPABASE_URL` e `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- [ ] Test connessione con una query base
+
+---
+
+## 🧭 FRONTEND
+- [ ] Navbar + Layout globale
+- [ ] Dashboard: riepilogo giornaliero
+- [ ] Nutrition: tracciamento pasti + scanner alimenti
+- [ ] Workouts: timer + calorie + musica
+- [ ] Progress: grafico settimanale
+- [ ] Journal: diario AI + feedback
+- [ ] SOS: pulsante emergenza con posizione GPS
+- [ ] Settings: profilo, tema, notifiche
+
+---
+
+## 🤖 AI E FUNZIONI SMART
+- [x] AI Journal (demo)
+- [ ] AI Coach: suggerimenti motivazionali
+- [ ] AI Food Scan: riconoscimento alimenti da foto o barcode
+- [ ] AI Workout Assistant: suggerisce allenamenti
+- [ ] Piano nutrizionale automatico personalizzato
+
+---
+
+## 🎧 MUSIC PLAYER
+- [ ] Controlli musicali integrati (play/pause/skip)
+- [ ] Supporto cuffie Bluetooth
+- [ ] Sincronizzazione con allenamenti
+- [ ] Possibilità di playlist IA “motivazionale”
+
+---
+
+## 🚨 FUNZIONE SOS
+- [ ] Tasto emergenza
+- [ ] Accesso a posizione GPS
+- [ ] Notifica ai contatti salvati o 112 (simulazione)
+- [ ] Log automatico dell’incidente in diario
+
+---
+
+## 📱 MOBILE READY
+- [ ] Configurazione **Expo** per versione mobile
+- [ ] Test su iOS / Android
+- [ ] Deploy su **Vercel** (Web) + **Expo Go** (Mobile)
+
+---
+
+## 🪶 GIT WORKFLOW
+```bash
+git add .
+git commit -m "update step"
+git push origin main
+📅 Aggiornato: 30 Ottobre 2025
+👨‍💻 Autori: [Tu] & ChatGPT (GPT-5)
+
+---
+
+✅ **Dopo che lo hai incollato e salvato**, scrivimi “fatto”  
+→ e io preparo subito il prossimo passo:
+creazione della **struttura delle pagine principali (`dashboard`, `nutrition`, ecc.)** in modo automatico.
