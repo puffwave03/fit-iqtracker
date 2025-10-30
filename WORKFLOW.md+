@@ -97,3 +97,27 @@ git push origin main
 ✅ **Dopo che lo hai incollato e salvato**, scrivimi “fatto”  
 → e io preparo subito il prossimo passo:
 creazione della **struttura delle pagine principali (`dashboard`, `nutrition`, ecc.)** in modo automatico.
+# FitIQtracker - Stato sviluppo (30/10/2025)
+
+## Avanzamenti completati oggi
+- Configurazione ambiente Next.js + Supabase
+- Navbar funzionante con collegamenti a tutte le sezioni
+- Pagina Nutrition:
+ - Connessione Supabase operativa
+ - Tabella `foods` popolata e leggibile
+ - Aggiunta pasti nella tabella `meals` funzionante
+ - Storico pasti visibile e aggiornato
+ - UI migliorata con colori e stili personalizzati
+
+## Da sistemare / Prossimi passi
+- Migliorare la ricerca alimenti (`autocomplete` attivo)
+- Creare pagina Progress (grafici calorie, nutrienti, pesi)
+- Integrare dashboard riepilogativa giornaliera
+- Creare sistema login + profili personalizzati (se non completo)
+- Implementare feature “AI Coach” e “Music Player Smart”
+
+---
+
+**Ultimo commit:** `feat: Nutrizione funzionante e collegata a Supabase` 
+**Responsabile:** PuffWave (user) 
+**Prossimo step:** Creazione grafici Progress Page

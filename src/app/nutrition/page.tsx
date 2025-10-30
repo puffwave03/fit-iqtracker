@@ -107,6 +107,12 @@ date: new Date().toISOString().split("T")[0],
 ]);
 
 if (error) throw error;
+;// 🔹 aggiorna calorie nel daily_progress
+await supabase
+.rpc("update_daily_progress", {
+user_id_param: user.user.id,
+calories_param: selected.calories,
+});
 
 alert("✅ Pasto aggiunto con successo!");
 setSearch("");
@@ -120,8 +126,7 @@ alert("Errore durante il salvataggio: " + err.message);
 } finally {
 setLoading(false);
 }
-};
-
+}
  return (
  <div className="min-h-screen bg-slate-950 text-white flex flex-col items-center p-6 pb-24">
  <h1 className="text-3xl font-bold text-lime-400 mb-6">
