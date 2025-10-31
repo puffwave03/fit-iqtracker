@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 import {
  AreaChart,
@@ -19,19 +20,18 @@ export default function DashboardPage() {
  steps: 0,
  });
  const [chartData, setChartData] = useState([]);
+ const [coachMessage, setCoachMessage] = useState("");
 
- // Recupera i dati da Supabase
+ // Recupera i dati riepilogativi
  const fetchSummary = async () => {
  const { data: user } = await supabase.auth.getUser();
  if (!user?.user) return;
 
- // Pasti (calorie in)
  const { data: meals } = await supabase
  .from("meals")
  .select("calories, date")
  .eq("user_id", user.user.id);
 
- // Allenamenti (calorie out + passi)
  const { data: workouts } = await supabase
  .from("workouts")
  .select("calories_burned, steps, date")
@@ -53,18 +53,31 @@ export default function DashboardPage() {
  steps: totalSteps,
  });
 
- // Genera dati per il grafico
+ // Genera dati grafico
  const last7 = Array.from({ length: 7 }).map((_, i) => {
  const d = subDays(new Date(), 6 - i);
  const dateStr = format(d, "yyyy-MM-dd");
- const inDay = meals?.filter((m) => m.date === dateStr)
+ const inDay = meals
+ ?.filter((m) => m.date === dateStr)
  .reduce((sum, m) => sum + Number(m.calories), 0);
- const outDay = workouts?.filter((w) => w.date === dateStr)
+ const outDay = workouts
+ ?.filter((w) => w.date === dateStr)
  .reduce((sum, w) => sum + Number(w.calories_burned), 0);
  return { date: dateStr, in: inDay, out: outDay };
  });
 
  setChartData(last7);
+
+ // Recupera ultimo messaggio motivazionale dal Coach AI
+ const { data: lastMessage } = await supabase
+ .from("ai_coach_feedbacks")
+ .select("advice")
+ .eq("user_id", user.user.id)
+ .order("created_at", { ascending: false })
+ .limit(1)
+ .single();
+
+ if (lastMessage) setCoachMessage(lastMessage.advice);
  };
 
  useEffect(() => {
@@ -100,7 +113,7 @@ export default function DashboardPage() {
  </div>
 
  {/* Grafico andamento */}
- <div className="w-full max-w-md bg-slate-900 border border-slate-800 p-4 rounded-xl">
+ <div className="w-full max-w-md bg-slate-900 border border-slate-800 p-4 rounded-xl mb-6">
  <p className="text-lime-400 font-semibold mb-2">Andamento Calorie</p>
  <ResponsiveContainer width="100%" height={250}>
  <AreaChart data={chartData}>
@@ -143,6 +156,26 @@ export default function DashboardPage() {
  </AreaChart>
  </ResponsiveContainer>
  </div>
+
+ {/* Riassunto Coach AI */}
+ <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-lg p-4 mt-4">
+ <p className="text-lime-400 font-semibold mb-2"> Coach AI</p>
+ {coachMessage ? (
+ <p className="text-gray-300 italic mb-4">{coachMessage}</p>
+ ) : (
+ <p className="text-gray-500 text-sm mb-4">
+ Nessun consiglio recente. Scrivi al tuo coach per iniziare!
+ </p>
+ )}
+
+ <Link
+ href="/coach"
+ className="block text-center bg-lime-500 text-slate-900 font-semibold py-2 rounded-lg hover:bg-lime-400 transition"
+ >
+ Apri Coach AI completo
+ </Link>
+ </div>
  </div>
  );
 }
+

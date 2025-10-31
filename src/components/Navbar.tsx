@@ -13,6 +13,7 @@ export default function Navbar() {
     { href: "/workouts", label: "💪 Allenamenti" },
     { href: "/progress", label: "📊 Progressi" },
     { href: "/journal", label: "📓 Diario" },
+    { href: "/coach", label: " Coach" },
     { href: "/settings", label: "⚙️ Impostazioni" },
   ];
 
